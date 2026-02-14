@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, Star, Truck, ShieldCheck, Leaf } from "lucide-react";
+import { Sparkles, Star, Truck, ShieldCheck } from "lucide-react";
 
 export default function Hero() {
     return (
