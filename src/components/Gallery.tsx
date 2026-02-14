@@ -73,7 +73,7 @@ export default function Gallery() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
-                    className="mt-8 rounded-3xl overflow-hidden shadow-xl"
+                    className="mt-8 rounded-3   xl overflow-hidden shadow-xl"
                 >
                     <img
                         src="/images/image (5).jpg"

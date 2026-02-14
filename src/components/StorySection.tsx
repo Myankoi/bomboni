@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
 
 const milestones = [
     { year: "Agustus 2025", text: "Lahirnya Bomboni — tugas PKKWU jadi passion", color: "bg-rose-primary" },
@@ -100,12 +99,6 @@ export default function StorySection() {
                             alt="Bomboloni artisan Bomboni - berbagai varian rasa"
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
-                        {/* Play Button Overlay */}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300">
-                                <Play className="w-6 h-6 text-rose-primary fill-rose-primary ml-1" />
-                            </div>
-                        </div>
                     </div>
 
                     {/* Floating Badge */}
