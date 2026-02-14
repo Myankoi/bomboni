@@ -4,14 +4,14 @@ import { motion } from "framer-motion";
 
 const galleryImages = [
     { src: "/images/IMG-20250830-WA0051.jpg", alt: "Bomboloni fresh dari oven", caption: "Fresh from the oven! 🍩🔥", span: true },
-    { src: "/images/image (1).jpeg", alt: "Pelanggan Bomboni - Pramuka", caption: "Anak-anak pramuka cinta Bomboni! 🫶", span: false },
+    { src: "/images/image (1).jpeg", alt: "Pelanggan Bomboni - Pramuka", caption: "Cinta Bomboni! 🫶", span: false },
     { src: "/images/IMG-20250823-WA0013.jpg", alt: "Pelanggan Bomboni - Delivery", caption: "Pesanan sampai, senyum merekah! 📦", span: false },
-    { src: "/images/image (2).jpg", alt: "Pelanggan Bomboni - Nutella Close Up", caption: "Nutella overload 🤤", span: false },
-    { src: "/images/IMG-20250827-WA0001.jpg", alt: "Tim Pramuka bareng Bomboni", caption: "Tim Pramuka x Bomboni 🤝", span: true },
+    { src: "/images/image (2).jpg", alt: "Pelanggan Bomboni - Nutella Close Up", caption: "Coklat overload 🤤", span: false },
+    { src: "/images/IMG-20250827-WA0001.jpg", alt: "Tim Pramuka bareng Bomboni", caption: "Bomboni 🤝", span: true },
     { src: "/images/image (3).jpg", alt: "Pelanggan Bomboni - Selfie", caption: "Bestie x Bomboni 🎉", span: false },
-    { src: "/images/image (2).jpeg", alt: "Pelanggan Bomboni - Customer muda", caption: "Pelanggan setia Bomboni! 💛", span: false },
-    { src: "/images/IMG-20250830-WA0055.jpg", alt: "Aneka varian bomboloni", caption: "Semua varian dalam satu nampan 🌈", span: true },
-    { src: "/images/image (1).jpg", alt: "Pelanggan Bomboni - Happy Customer", caption: "Pengiriman sampai aman 📦", span: false },
+    { src: "/images/image (2).jpeg", alt: "Pelanggan Bomboni - Customer muda", caption: "Pelanggan setia Bomboni!", span: false },
+    { src: "/images/IMG-20250830-WA0055.jpg", alt: "Aneka varian bomboloni", caption: "All variant", span: true },
+    { src: "/images/image (1).jpg", alt: "Pelanggan Bomboni - Happy Customer", caption: "Pengiriman sampai aman sentosa", span: false },
     { src: "/images/image (4).jpg", alt: "Pelanggan Bomboni - Transaksi", caption: "Happy customer! ✨", span: false },
     { src: "/images/image (6).jpg", alt: "Tim Bomboni - Behind the Scenes", caption: "Behind the scenes 🍩", span: false },
 ];
