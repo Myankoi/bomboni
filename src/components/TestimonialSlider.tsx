@@ -15,7 +15,7 @@ export default function TestimonialSlider() {
                 }}
             />
 
-            <div className="max-w-7xl mx-auto relative z-10">
+            <div className="max-w-6xl mx-auto relative z-10">
                 {/* Section Header */}
                 <div className="flex flex-col items-center text-center mb-16 gap-4">
                     <span className="text-rose-primary font-bold tracking-[0.2em] text-sm uppercase font-sans">
@@ -78,35 +78,20 @@ export default function TestimonialSlider() {
                             </p>
 
                             {/* Author */}
-                            <div className={`flex items-center gap-4 border-t pt-4 ${t.featured
+                            <div className={`flex items-center gap-3 border-t pt-4 ${t.featured
                                 ? "border-white/10 justify-center"
                                 : "border-rose-100"
                                 }`}>
-                                <div className={`w-12 h-12 rounded-full overflow-hidden flex-shrink-0 ${t.featured
-                                    ? "ring-2 ring-gold-accent"
-                                    : "ring-2 ring-rose-200"
+                                <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0 ${t.featured
+                                    ? "bg-gradient-to-br from-gold-accent to-amber-500 text-white"
+                                    : "bg-gradient-to-br from-rose-primary/80 to-rose-dark text-white"
                                     }`}>
-                                    {(t as any).image ? (
-                                        <img src={(t as any).image} alt={t.name} className="w-full h-full object-cover" />
-                                    ) : (
-                                        <div className={`w-full h-full flex items-center justify-center font-bold text-xl ${t.featured
-                                            ? "bg-white/20 text-gold-accent"
-                                            : "bg-rose-200 text-rose-dark"
-                                            }`}>
-                                            {t.initials}
-                                        </div>
-                                    )}
+                                    {t.initials}
                                 </div>
-                                <div className={t.featured ? "text-left" : ""}>
-                                    <h4 className={`font-bold font-serif ${t.featured ? "text-gold-light" : "text-[#2d1b20]"
-                                        }`}>
-                                        {t.name}
-                                    </h4>
-                                    <p className={`text-xs font-medium uppercase tracking-wide font-sans ${t.featured ? "text-gray-400" : "text-rose-primary"
-                                        }`}>
-                                        {t.role}
-                                    </p>
-                                </div>
+                                <h4 className={`font-bold font-serif ${t.featured ? "text-gold-light" : "text-[#2d1b20]"
+                                    }`}>
+                                    {t.name}
+                                </h4>
                             </div>
                         </motion.div>
                     ))}

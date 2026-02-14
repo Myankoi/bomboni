@@ -38,7 +38,7 @@ export default function Navbar() {
                 : "bg-transparent"
                 }`}
         >
-            <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
                 {/* Logo */}
                 <a href="#home" className="flex items-center gap-2 group cursor-pointer shrink-0">
                     <img
@@ -112,7 +112,16 @@ export default function Navbar() {
                                 <a
                                     key={link.href + link.label}
                                     href={link.href}
-                                    onClick={() => setMobileOpen(false)}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setMobileOpen(false);
+                                        setTimeout(() => {
+                                            const el = document.querySelector(link.href);
+                                            if (el) {
+                                                el.scrollIntoView({ behavior: "smooth", block: "start" });
+                                            }
+                                        }, 300);
+                                    }}
                                     className="block text-base font-medium py-3 text-neutral-600 hover:text-rose-primary transition-colors border-b border-rose-primary/5"
                                 >
                                     {link.label}

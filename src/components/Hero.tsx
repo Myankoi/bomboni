@@ -5,7 +5,7 @@ import { Sparkles, Star, Truck, ShieldCheck, Leaf } from "lucide-react";
 
 export default function Hero() {
     return (
-        <section className="relative pt-12 sm:pt-16 pb-16 sm:pb-32 px-4 sm:px-6 overflow-hidden min-h-[80vh] sm:min-h-[90vh] flex items-center" id="home">
+        <section className="relative pt-8 sm:pt-12 pb-12 sm:pb-20 px-6 sm:px-10 lg:px-16 overflow-hidden" id="home">
             {/* Decorative Circles */}
             <motion.div
                 animate={{ rotate: 360 }}
@@ -34,7 +34,7 @@ export default function Hero() {
                 className="absolute bottom-40 left-1/4 w-2 h-2 rounded-full bg-gold-accent/40"
             />
 
-            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 items-center w-full">
+            <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center w-full">
                 {/* Left - Text */}
                 <div className="flex flex-col gap-6 z-10 text-center lg:text-left">
                     {/* Badge */}
@@ -53,7 +53,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black leading-[1.05] tracking-tight text-[#2d1b20]"
+                        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.08] tracking-tight text-[#2d1b20]"
                     >
                         Sentuhan{" "}
                         <span className="italic text-rose-primary">Lumer</span>
@@ -95,7 +95,7 @@ export default function Hero() {
                 </div>
 
                 {/* Right - Image + Floating Badges */}
-                <div className="relative flex items-center justify-center h-[350px] sm:h-[500px] lg:h-[600px]">
+                <div className="relative flex items-center justify-center h-[280px] sm:h-[400px] lg:h-[480px]">
                     {/* Main Product Image */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -108,7 +108,7 @@ export default function Hero() {
                             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                             src="/images/image (1).png"
                             alt="Premium Bomboloni Strawberry"
-                            className="w-[220px] h-[220px] sm:w-[380px] sm:h-[380px] lg:w-[420px] lg:h-[420px] object-cover rounded-full shadow-2xl shadow-rose-primary/15 border-[6px] border-white/80"
+                            className="w-[220px] h-[220px] sm:w-[380px] sm:h-[380px] lg:w-[420px] lg:h-[420px] object-cover rounded-[2.5rem] shadow-2xl shadow-rose-primary/15 border-[6px] border-white/80"
                         />
                     </motion.div>
 

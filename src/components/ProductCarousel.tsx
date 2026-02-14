@@ -48,7 +48,7 @@ export default function ProductCarousel() {
     return (
         <>
             <section className="py-16 sm:py-20 px-4 sm:px-6 relative overflow-hidden" id="menu">
-                <div className="max-w-7xl mx-auto">
+                <div className="max-w-6xl mx-auto">
                     {/* Section Header */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -108,11 +108,11 @@ export default function ProductCarousel() {
                                     className="relative flex items-center justify-center"
                                 >
                                     {/* Gray circle bg */}
-                                    <div className="absolute w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] lg:w-[360px] lg:h-[360px] rounded-full bg-neutral-200/50" />
+                                    <div className="absolute w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] lg:w-[360px] lg:h-[360px] rounded-[2rem] bg-neutral-200/50" />
                                     <img
                                         src={product.image}
                                         alt={product.name}
-                                        className="relative z-10 w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] lg:w-[320px] lg:h-[320px] object-cover rounded-full shadow-2xl shadow-rose-primary/10 border-4 border-white"
+                                        className="relative z-10 w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] lg:w-[320px] lg:h-[320px] object-cover rounded-[2rem] shadow-2xl shadow-rose-primary/10 border-4 border-white"
                                     />
                                     {/* Small floating product image */}
                                     <motion.div

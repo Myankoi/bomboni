@@ -10,7 +10,7 @@ export default function Footer() {
             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-rose-dark via-rose-primary to-gold-accent" />
             <div className="absolute -right-20 top-20 w-64 h-64 bg-rose-primary/5 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 mb-12 sm:mb-16 relative z-10">
+            <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 mb-12 sm:mb-16 relative z-10">
                 {/* Brand */}
                 <div className="col-span-2 md:col-span-1">
                     <div className="flex items-center gap-2 mb-8">
@@ -114,7 +114,7 @@ export default function Footer() {
             </div>
 
             {/* Bottom Bar */}
-            <div className="max-w-7xl mx-auto pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm gap-4">
+            <div className="max-w-6xl mx-auto pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm gap-4">
                 <p>© 2025 Bomboni. PKKWU Project.</p>
                 <p className="flex items-center gap-1">
                     Made with <Heart className="w-3 h-3 text-rose-primary fill-rose-primary" /> for bomboloni lovers.

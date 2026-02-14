@@ -25,7 +25,7 @@ export default function StorySection() {
                 className="absolute bottom-40 right-1/3 w-1.5 h-1.5 rounded-full bg-gold-accent/30"
             />
 
-            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
+            <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
                 {/* Left - Content */}
                 <div className="relative z-10">
                     <motion.h2

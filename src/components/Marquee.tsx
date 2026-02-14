@@ -10,11 +10,13 @@ export default function Marquee() {
         "✦",
         "Area 5C Jakarta Timur",
         "✦",
-        "100% Handcrafted",
+        "Handmade Fresh",
         "✦",
-        "Mulai Rp 15.000",
+        "Rp 8.000/pcs",
         "✦",
-        "PKKWU Project",
+        "6 Varian Rasa",
+        "✦",
+        "Min. Order 6 pcs",
         "✦",
     ];
 

@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
 import WhatsAppModal from "@/components/WhatsAppModal";
 import FloatingCart from "@/components/FloatingCart";
+import ScrollToTop from "@/components/ScrollToTop";
 
 
 export default function Home() {
@@ -29,7 +30,7 @@ export default function Home() {
       <CartDrawer />
       <WhatsAppModal />
       <FloatingCart />
-
+      <ScrollToTop />
     </div>
   );
 }
