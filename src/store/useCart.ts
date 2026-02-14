@@ -16,6 +16,7 @@ interface CartState {
 
     // Actions
     addItem: (product: Product) => void;
+    addItemWithQuantity: (product: Product, quantity: number) => void;
     removeItem: (productId: string) => void;
     updateQuantity: (productId: string, quantity: number) => void;
     clearCart: () => void;
@@ -51,6 +52,23 @@ export const useCart = create<CartState>()(
                     });
                 } else {
                     set({ items: [...items, { product, quantity: 1 }] });
+                }
+            },
+
+            addItemWithQuantity: (product: Product, quantity: number) => {
+                const items = get().items;
+                const existingItem = items.find((item) => item.product.id === product.id);
+
+                if (existingItem) {
+                    set({
+                        items: items.map((item) =>
+                            item.product.id === product.id
+                                ? { ...item, quantity: item.quantity + quantity }
+                                : item
+                        ),
+                    });
+                } else {
+                    set({ items: [...items, { product, quantity }] });
                 }
             },
 

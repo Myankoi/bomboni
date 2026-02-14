@@ -1,40 +1,28 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { products } from "@/data/products";
 import ProductCard from "./ProductCard";
 
 export default function ProductGrid() {
     return (
-        <section id="menu" className="relative py-24 px-4 sm:px-6 lg:px-8">
-            {/* Background Decoration */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/5 blur-3xl" />
-                <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-primary/5 blur-3xl" />
-            </div>
-
+        <section className="py-24 px-6 relative" id="menu">
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Section Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
-                >
-                    <span className="inline-block text-primary font-medium text-sm uppercase tracking-widest mb-4">
-                        Our Menu
+                <div className="flex flex-col items-center text-center mb-20 gap-4">
+                    <span className="text-rose-primary font-bold tracking-[0.2em] text-sm uppercase font-sans">
+                        Sweet Delights
                     </span>
-                    <h2 className="font-serif text-4xl sm:text-5xl font-bold text-chocolate mb-4">
-                        Pilih Favoritmu
+                    <h2 className="text-5xl md:text-6xl font-black text-[#2d1b20]">
+                        Menu Bomboloni Kami
                     </h2>
-                    <p className="text-chocolate/50 max-w-lg mx-auto text-lg">
-                        Setiap bomboloni dibuat fresh daily dengan filling premium yang berlimpah.
+                    <div className="h-1.5 w-24 bg-gradient-to-r from-rose-primary to-gold-accent rounded-full" />
+                    <p className="text-neutral-500 max-w-lg font-light text-lg font-sans">
+                        Pilih rasa favoritmu, dari yang manis klasik hingga sensasi modern yang lumer abis!
                     </p>
-                </motion.div>
+                </div>
 
-                {/* Product Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                {/* Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
                     {products.map((product, index) => (
                         <ProductCard key={product.id} product={product} index={index} />
                     ))}

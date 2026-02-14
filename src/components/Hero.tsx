@@ -1,147 +1,201 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Sparkles } from "lucide-react";
-
-const floatingDonuts = [
-    { emoji: "🍩", className: "top-20 left-[10%]", delay: 0, duration: 6 },
-    { emoji: "🍩", className: "top-40 right-[15%]", delay: 1, duration: 7 },
-    { emoji: "🍩", className: "bottom-32 left-[20%]", delay: 2, duration: 8 },
-    { emoji: "🍩", className: "top-28 right-[8%]", delay: 0.5, duration: 6.5 },
-    { emoji: "🍩", className: "bottom-20 right-[25%]", delay: 1.5, duration: 7.5 },
-];
+import { Sparkles, Star, Truck, ShieldCheck, Leaf } from "lucide-react";
 
 export default function Hero() {
     return (
-        <section
-            id="home"
-            className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
-        >
-            {/* Background Gradient Orbs */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-primary/10 blur-3xl" />
-                <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-primary/5 blur-3xl" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl" />
-            </div>
-
-            {/* Floating Donuts */}
-            {floatingDonuts.map((donut, i) => (
-                <motion.div
-                    key={i}
-                    className={`absolute ${donut.className} text-4xl sm:text-5xl opacity-20 pointer-events-none select-none`}
-                    animate={{
-                        y: [-20, 20, -20],
-                        rotate: [0, 10, -10, 0],
-                    }}
-                    transition={{
-                        duration: donut.duration,
-                        delay: donut.delay,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                    }}
-                >
-                    {donut.emoji}
-                </motion.div>
-            ))}
-
-            {/* Hero Content */}
-            <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto">
-                {/* Badge */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm text-primary-700 px-5 py-2 rounded-full text-sm font-medium mb-8 border border-primary/20"
-                >
-                    <Sparkles className="w-4 h-4" />
-                    Fresh from the oven, daily!
-                </motion.div>
-
-                {/* Main Headline */}
-                <motion.h1
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.1] mb-6"
-                >
-                    <span className="text-chocolate">Lumer di </span>
-                    <span className="gradient-text">Mulut</span>
-                    <br />
-                    <span className="text-chocolate">Nyaman di </span>
-                    <span className="gradient-text">Kantong</span>
-                </motion.h1>
-
-                {/* Sub-headline */}
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-chocolate/60 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
-                >
-                    Bomboloni premium handcrafted dengan filling berlimpah.
-                    <br className="hidden sm:block" />
-                    Dibuat fresh setiap hari dengan bahan pilihan terbaik.
-                </motion.p>
-
-                {/* CTA Buttons */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                    className="flex flex-col sm:flex-row items-center justify-center gap-4"
-                >
-                    <motion.a
-                        href="#menu"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="group relative inline-flex items-center gap-2 bg-primary hover:bg-primary-600 text-white font-semibold px-8 py-4 rounded-2xl shadow-glow hover:shadow-glow-lg transition-all duration-300 text-lg"
-                    >
-                        Lihat Menu
-                        <ArrowDown className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
-                    </motion.a>
-
-                    <motion.a
-                        href="#testimonials"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm hover:bg-white/80 text-chocolate font-semibold px-8 py-4 rounded-2xl border border-chocolate/10 hover:border-chocolate/20 transition-all duration-300 text-lg"
-                    >
-                        Kata Mereka ⭐
-                    </motion.a>
-                </motion.div>
-
-                {/* Stats */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.8 }}
-                    className="flex items-center justify-center gap-8 sm:gap-12 mt-16"
-                >
-                    {[
-                        { value: "10K+", label: "Happy Customers" },
-                        { value: "6", label: "Varian Rasa" },
-                        { value: "4.9", label: "Rating ⭐" },
-                    ].map((stat) => (
-                        <div key={stat.label} className="text-center">
-                            <div className="text-2xl sm:text-3xl font-serif font-bold text-chocolate">
-                                {stat.value}
-                            </div>
-                            <div className="text-sm text-chocolate/50 mt-1">{stat.label}</div>
-                        </div>
-                    ))}
-                </motion.div>
-            </div>
-
-            {/* Scroll indicator */}
+        <section className="relative pt-12 sm:pt-16 pb-16 sm:pb-32 px-4 sm:px-6 overflow-hidden min-h-[80vh] sm:min-h-[90vh] flex items-center" id="home">
+            {/* Decorative Circles */}
             <motion.div
-                className="absolute bottom-8 left-1/2 -translate-x-1/2"
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-            >
-                <div className="w-6 h-10 rounded-full border-2 border-chocolate/20 flex justify-center pt-2">
-                    <div className="w-1.5 h-3 rounded-full bg-primary/50" />
+                animate={{ rotate: 360 }}
+                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                className="absolute -top-20 -left-20 w-60 h-60 rounded-full border border-rose-primary/10"
+            />
+            <motion.div
+                animate={{ rotate: -360 }}
+                transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+                className="absolute bottom-20 -right-10 w-40 h-40 rounded-full border border-rose-primary/10"
+            />
+            <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                className="absolute top-1/2 right-20 w-24 h-24 rounded-full border border-gold-accent/15"
+            />
+            {/* Small floating dots */}
+            <motion.div
+                animate={{ y: [-10, 10, -10], opacity: [0.3, 0.6, 0.3] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                className="absolute top-40 right-1/3 w-2 h-2 rounded-full bg-rose-primary/30"
+            />
+            <motion.div
+                animate={{ y: [10, -10, 10], opacity: [0.2, 0.5, 0.2] }}
+                transition={{ duration: 5, repeat: Infinity }}
+                className="absolute bottom-40 left-1/4 w-2 h-2 rounded-full bg-gold-accent/40"
+            />
+
+            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 items-center w-full">
+                {/* Left - Text */}
+                <div className="flex flex-col gap-6 z-10 text-center lg:text-left">
+                    {/* Badge */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="inline-flex items-center self-center lg:self-start gap-2 bg-rose-primary/10 border border-rose-primary/20 text-rose-dark px-4 py-2 rounded-full text-xs font-bold tracking-[0.15em] uppercase"
+                    >
+                        <Sparkles className="w-3.5 h-3.5 text-rose-primary" />
+                        Bomboloni Terbaik
+                    </motion.div>
+
+                    {/* Headline */}
+                    <motion.h1
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                        className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black leading-[1.05] tracking-tight text-[#2d1b20]"
+                    >
+                        Sentuhan{" "}
+                        <span className="italic text-rose-primary">Lumer</span>
+                        {" "}dengan Cita Rasa{" "}
+                        <span className="italic text-gold-accent font-serif">Premium</span>
+                    </motion.h1>
+
+                    {/* Description */}
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        className="text-sm sm:text-lg text-neutral-500 font-light max-w-xl mx-auto lg:mx-0 leading-relaxed"
+                    >
+                        Bomboloni artisan handmade dengan isian melimpah. Tersedia dalam berbagai varian rasa premium, dibuat fresh setiap batch via sistem <span className="font-semibold text-rose-dark">Pre-Order</span>.
+                    </motion.p>
+
+                    {/* CTA */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                        className="flex flex-wrap gap-4 justify-center lg:justify-start pt-2"
+                    >
+                        <a
+                            href="#menu"
+                            className="bg-gradient-to-r from-rose-primary to-rose-dark text-white px-8 py-4 rounded-full font-bold text-sm hover:shadow-2xl hover:shadow-rose-primary/30 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group"
+                        >
+                            <span className="relative z-10">Order Sekarang</span>
+                            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                        </a>
+                        <a
+                            href="#about"
+                            className="px-8 py-4 rounded-full font-bold text-sm text-rose-dark border-2 border-rose-dark/20 hover:border-rose-dark hover:bg-rose-dark hover:text-white transition-all duration-300"
+                        >
+                            Tentang Kami
+                        </a>
+                    </motion.div>
                 </div>
-            </motion.div>
+
+                {/* Right - Image + Floating Badges */}
+                <div className="relative flex items-center justify-center h-[350px] sm:h-[500px] lg:h-[600px]">
+                    {/* Main Product Image */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8 }}
+                        className="relative z-10"
+                    >
+                        <motion.img
+                            animate={{ y: [-8, 8, -8] }}
+                            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                            src="/images/image (1).png"
+                            alt="Premium Bomboloni Strawberry"
+                            className="w-[220px] h-[220px] sm:w-[380px] sm:h-[380px] lg:w-[420px] lg:h-[420px] object-cover rounded-full shadow-2xl shadow-rose-primary/15 border-[6px] border-white/80"
+                        />
+                    </motion.div>
+
+                    {/* Floating Badge - Rating */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, delay: 0.5 }}
+                        className="absolute top-16 right-0 lg:right-4 z-20 hidden sm:block"
+                    >
+                        <motion.div
+                            animate={{ y: [-5, 5, -5] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                            className="bg-white/80 backdrop-blur-lg border border-white/60 rounded-2xl px-4 py-3 shadow-lg flex items-center gap-3"
+                        >
+                            <div className="w-8 h-8 rounded-full bg-gold-accent/20 flex items-center justify-center">
+                                <Star className="w-4 h-4 text-gold-accent fill-gold-accent" />
+                            </div>
+                            <div>
+                                <p className="text-sm font-bold text-[#2d1b20]">Rating Terbaik</p>
+                                <p className="text-xs text-neutral-400">4.9/5.0</p>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+
+                    {/* Floating Badge - Kualitas */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, delay: 0.7 }}
+                        className="absolute bottom-40 right-0 lg:-right-4 z-20 hidden sm:block"
+                    >
+                        <motion.div
+                            animate={{ y: [5, -5, 5] }}
+                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                            className="bg-white/80 backdrop-blur-lg border border-white/60 rounded-2xl px-4 py-3 shadow-lg flex items-center gap-3"
+                        >
+                            <div className="w-8 h-8 rounded-full bg-rose-primary/15 flex items-center justify-center">
+                                <ShieldCheck className="w-4 h-4 text-rose-primary" />
+                            </div>
+                            <div>
+                                <p className="text-sm font-bold text-[#2d1b20]">Fresh & Handmade</p>
+                                <p className="text-xs text-neutral-400">Dibuat dengan cinta</p>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+
+                    {/* Floating Badge - Pengiriman */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, delay: 0.9 }}
+                        className="absolute bottom-16 right-8 lg:right-12 z-20 hidden sm:block"
+                    >
+                        <motion.div
+                            animate={{ y: [-3, 7, -3] }}
+                            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+                            className="bg-white/80 backdrop-blur-lg border border-white/60 rounded-2xl px-4 py-3 shadow-lg flex items-center gap-3"
+                        >
+                            <div className="w-8 h-8 rounded-full bg-emerald-500/15 flex items-center justify-center">
+                                <Truck className="w-4 h-4 text-emerald-600" />
+                            </div>
+                            <div>
+                                <p className="text-sm font-bold text-[#2d1b20]">Sistem Pre-Order</p>
+                                <p className="text-xs text-neutral-400">Area 5C Jaktim</p>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+
+                    {/* Floating Badge - Natural */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 1.1 }}
+                        className="absolute bottom-4 left-4 lg:left-16 z-20 hidden sm:block"
+                    >
+                        <motion.div
+                            animate={{ y: [3, -6, 3] }}
+                            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+                            className="bg-white/80 backdrop-blur-lg border border-white/60 rounded-xl px-3 py-2 shadow-lg"
+                        >
+                            <p className="text-xs font-bold text-[#2d1b20]">100% Natural</p>
+                            <p className="text-[10px] text-neutral-400">Tanpa Pengawet</p>
+                        </motion.div>
+                    </motion.div>
+                </div>
+            </div>
         </section>
     );
 }

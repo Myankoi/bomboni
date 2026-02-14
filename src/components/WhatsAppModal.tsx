@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, User, MapPin, Loader2 } from "lucide-react";
 import { useCart } from "@/store/useCart";
 import { generateWhatsAppURL } from "@/utils/whatsappLogic";
+import { formatPrice } from "@/data/products";
 
 export default function WhatsAppModal() {
     const { items, isCheckoutOpen, closeCheckout, subtotal, clearCart } = useCart();
@@ -42,7 +43,7 @@ export default function WhatsAppModal() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={closeCheckout}
-                        className="fixed inset-0 bg-chocolate/50 backdrop-blur-sm z-[60]"
+                        className="fixed inset-0 bg-[#2d1b20]/50 backdrop-blur-sm z-[60]"
                     />
 
                     {/* Modal */}
@@ -58,7 +59,7 @@ export default function WhatsAppModal() {
                             onClick={(e) => e.stopPropagation()}
                         >
                             {/* Header */}
-                            <div className="relative bg-gradient-to-r from-emerald-500 to-emerald-600 px-6 py-6 text-white">
+                            <div className="relative bg-gradient-to-r from-rose-primary to-rose-dark px-6 py-6 text-white">
                                 <motion.button
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.9 }}
@@ -74,7 +75,7 @@ export default function WhatsAppModal() {
                                     </div>
                                     <div>
                                         <h3 className="font-serif text-xl font-bold">Checkout WhatsApp</h3>
-                                        <p className="text-emerald-100 text-sm">
+                                        <p className="text-rose-light text-sm font-sans">
                                             Isi data untuk melanjutkan pesanan
                                         </p>
                                     </div>
@@ -85,65 +86,61 @@ export default function WhatsAppModal() {
                             <form onSubmit={handleSubmit} className="p-6 space-y-5">
                                 {/* Name Field */}
                                 <div>
-                                    <label className="block text-sm font-medium text-chocolate/70 mb-2">
+                                    <label className="block text-sm font-medium text-neutral-500 mb-2 font-sans">
                                         Nama Lengkap
                                     </label>
                                     <div className="relative">
-                                        <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-chocolate/30" />
+                                        <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-300" />
                                         <input
                                             type="text"
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
                                             placeholder="Masukkan nama kamu"
                                             required
-                                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-cream-300 bg-cream/30 text-chocolate placeholder:text-chocolate/30 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
+                                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-rose-100 bg-cream-bg/30 text-[#2d1b20] placeholder:text-neutral-300 focus:outline-none focus:ring-2 focus:ring-rose-primary/30 focus:border-rose-primary transition-all font-sans"
                                         />
                                     </div>
                                 </div>
 
                                 {/* Location Field */}
                                 <div>
-                                    <label className="block text-sm font-medium text-chocolate/70 mb-2">
+                                    <label className="block text-sm font-medium text-neutral-500 mb-2 font-sans">
                                         Alamat / Link Google Maps
                                     </label>
                                     <div className="relative">
-                                        <MapPin className="absolute left-3.5 top-3.5 w-4 h-4 text-chocolate/30" />
+                                        <MapPin className="absolute left-3.5 top-3.5 w-4 h-4 text-neutral-300" />
                                         <textarea
                                             value={location}
                                             onChange={(e) => setLocation(e.target.value)}
                                             placeholder="Alamat lengkap atau paste link Google Maps"
                                             required
                                             rows={2}
-                                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-cream-300 bg-cream/30 text-chocolate placeholder:text-chocolate/30 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all resize-none"
+                                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-rose-100 bg-cream-bg/30 text-[#2d1b20] placeholder:text-neutral-300 focus:outline-none focus:ring-2 focus:ring-rose-primary/30 focus:border-rose-primary transition-all resize-none font-sans"
                                         />
                                     </div>
                                 </div>
 
                                 {/* Order Summary */}
-                                <div className="bg-cream/50 rounded-xl p-4 border border-cream-300">
-                                    <h4 className="text-sm font-semibold text-chocolate/70 mb-2">
+                                <div className="bg-cream-bg/50 rounded-xl p-4 border border-rose-100">
+                                    <h4 className="text-sm font-semibold text-neutral-500 mb-2 font-sans">
                                         Ringkasan Pesanan
                                     </h4>
                                     <div className="space-y-1 mb-3">
                                         {items.map((item) => (
                                             <div
                                                 key={item.product.id}
-                                                className="flex items-center justify-between text-sm"
+                                                className="flex items-center justify-between text-sm font-sans"
                                             >
-                                                <span className="text-chocolate/60">
-                                                    {item.product.emoji} {item.product.name} x{item.quantity}
+                                                <span className="text-neutral-500">
+                                                    {item.product.name} x{item.quantity}
                                                 </span>
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="border-t border-cream-300 pt-2 flex items-center justify-between">
-                                        <span className="font-semibold text-chocolate text-sm">Total</span>
-                                        <span className="font-bold text-primary text-lg">
-                                            {new Intl.NumberFormat("id-ID", {
-                                                style: "currency",
-                                                currency: "IDR",
-                                                minimumFractionDigits: 0,
-                                            }).format(total)}
+                                    <div className="border-t border-rose-100 pt-2 flex items-center justify-between">
+                                        <span className="font-semibold text-[#2d1b20] text-sm font-sans">Total</span>
+                                        <span className="font-bold text-rose-primary text-lg font-sans">
+                                            {formatPrice(total)}
                                         </span>
                                     </div>
                                 </div>
@@ -154,7 +151,7 @@ export default function WhatsAppModal() {
                                     disabled={loading || !name.trim() || !location.trim()}
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
-                                    className="w-full flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 disabled:bg-emerald-300 text-white font-bold py-4 rounded-2xl shadow-lg shadow-emerald-500/30 transition-all duration-300 text-lg"
+                                    className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-rose-primary to-rose-dark disabled:opacity-50 text-white font-bold py-4 rounded-2xl shadow-lg shadow-rose-primary/30 transition-all duration-300 text-lg font-sans"
                                 >
                                     {loading ? (
                                         <Loader2 className="w-5 h-5 animate-spin" />

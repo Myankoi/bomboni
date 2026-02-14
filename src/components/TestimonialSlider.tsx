@@ -1,162 +1,115 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { motion } from "framer-motion";
+import { Star } from "lucide-react";
 import { testimonials } from "@/data/products";
 
 export default function TestimonialSlider() {
-    const [current, setCurrent] = useState(0);
-    const [direction, setDirection] = useState(0);
-
-    const paginate = useCallback(
-        (newDirection: number) => {
-            setDirection(newDirection);
-            setCurrent((prev) => {
-                const next = prev + newDirection;
-                if (next < 0) return testimonials.length - 1;
-                if (next >= testimonials.length) return 0;
-                return next;
-            });
-        },
-        []
-    );
-
-    useEffect(() => {
-        const timer = setInterval(() => paginate(1), 5000);
-        return () => clearInterval(timer);
-    }, [paginate]);
-
-    const variants = {
-        enter: (dir: number) => ({
-            x: dir > 0 ? 200 : -200,
-            opacity: 0,
-        }),
-        center: {
-            x: 0,
-            opacity: 1,
-        },
-        exit: (dir: number) => ({
-            x: dir > 0 ? -200 : 200,
-            opacity: 0,
-        }),
-    };
-
-    const testimonial = testimonials[current];
-
     return (
-        <section id="testimonials" className="relative py-24 px-4 sm:px-6 lg:px-8">
-            {/* Background */}
-            <div className="absolute inset-0 bg-gradient-to-b from-cream via-white to-cream pointer-events-none" />
+        <section className="py-16 sm:py-24 px-4 sm:px-6 relative overflow-hidden bg-rose-50" id="testimonials">
+            {/* Pattern overlay */}
+            <div
+                className="absolute inset-0 opacity-10"
+                style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D95D7E' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                }}
+            />
 
-            <div className="max-w-4xl mx-auto relative z-10">
+            <div className="max-w-7xl mx-auto relative z-10">
                 {/* Section Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
-                >
-                    <span className="inline-block text-primary font-medium text-sm uppercase tracking-widest mb-4">
-                        Testimonials
+                <div className="flex flex-col items-center text-center mb-16 gap-4">
+                    <span className="text-rose-primary font-bold tracking-[0.2em] text-sm uppercase font-sans">
+                        Happy Customers
                     </span>
-                    <h2 className="font-serif text-4xl sm:text-5xl font-bold text-chocolate mb-4">
-                        Kata Mereka
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-[#2d1b20]">
+                        Apa Kata Mereka?
                     </h2>
-                    <p className="text-chocolate/50 max-w-lg mx-auto text-lg">
-                        Ribuan pelanggan sudah jatuh cinta dengan bomboloni kami.
-                    </p>
-                </motion.div>
+                    <div className="h-1.5 w-24 bg-gradient-to-r from-rose-primary to-gold-accent rounded-full" />
+                </div>
 
-                {/* Testimonial Card */}
-                <div className="relative">
-                    <div className="bg-white rounded-3xl shadow-soft-lg p-8 sm:p-12 min-h-[280px] flex items-center overflow-hidden">
-                        {/* Quote Icon */}
-                        <Quote className="absolute top-6 right-6 w-12 h-12 text-primary/10" />
-
-                        <AnimatePresence mode="wait" custom={direction}>
-                            <motion.div
-                                key={current}
-                                custom={direction}
-                                variants={variants}
-                                initial="enter"
-                                animate="center"
-                                exit="exit"
-                                transition={{ duration: 0.4, ease: "easeInOut" }}
-                                className="w-full text-center"
-                            >
-                                {/* Stars */}
-                                <div className="flex items-center justify-center gap-1 mb-6">
-                                    {Array.from({ length: 5 }).map((_, i) => (
-                                        <Star
-                                            key={i}
-                                            className={`w-5 h-5 ${i < testimonial.rating
-                                                    ? "text-amber-400 fill-amber-400"
-                                                    : "text-gray-200"
-                                                }`}
-                                        />
-                                    ))}
+                {/* Testimonial Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {testimonials.map((t, i) => (
+                        <motion.div
+                            key={t.id}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: i * 0.15 }}
+                            className={
+                                t.featured
+                                    ? "bg-gradient-to-br from-[#2d1b20] to-[#4a2c35] text-white p-6 sm:p-8 rounded-2xl shadow-2xl relative scale-100 md:scale-105 transform z-10"
+                                    : "glass-panel p-6 sm:p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2 relative border-t-4 border-rose-primary"
+                            }
+                        >
+                            {/* Featured badge */}
+                            {t.featured && (
+                                <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-gold-accent text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg font-sans">
+                                    Top Review
                                 </div>
+                            )}
 
-                                {/* Text */}
-                                <p className="text-chocolate/70 text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl mx-auto italic">
-                                    &ldquo;{testimonial.text}&rdquo;
-                                </p>
+                            {/* Quote icon for non-featured */}
+                            {!t.featured && (
+                                <div className="absolute -top-5 left-8 w-10 h-10 bg-gradient-to-br from-rose-primary to-rose-dark rounded-full flex items-center justify-center text-white shadow-lg text-xl font-serif">
+                                    &ldquo;
+                                </div>
+                            )}
 
-                                {/* Avatar + Name */}
-                                <div className="flex items-center justify-center gap-3">
-                                    <div className="w-12 h-12 rounded-full bg-cream-200 flex items-center justify-center text-2xl">
-                                        {testimonial.avatar}
-                                    </div>
-                                    <div className="text-left">
-                                        <div className="font-semibold text-chocolate">
-                                            {testimonial.name}
+                            {/* Stars */}
+                            <div className={`flex mb-4 ${t.featured ? "justify-center" : ""} ${!t.featured ? "mt-2" : ""}`}>
+                                {Array.from({ length: 5 }).map((_, si) => (
+                                    <Star
+                                        key={si}
+                                        className={`w-5 h-5 ${si < t.rating
+                                            ? "text-gold-accent fill-gold-accent"
+                                            : "text-gray-300"
+                                            }`}
+                                    />
+                                ))}
+                            </div>
+
+                            {/* Quote text */}
+                            <p className={`italic mb-6 leading-relaxed ${t.featured
+                                ? "text-gray-200 text-center font-serif text-lg"
+                                : "text-neutral-600 font-light"
+                                }`}>
+                                &ldquo;{t.text}&rdquo;
+                            </p>
+
+                            {/* Author */}
+                            <div className={`flex items-center gap-4 border-t pt-4 ${t.featured
+                                ? "border-white/10 justify-center"
+                                : "border-rose-100"
+                                }`}>
+                                <div className={`w-12 h-12 rounded-full overflow-hidden flex-shrink-0 ${t.featured
+                                    ? "ring-2 ring-gold-accent"
+                                    : "ring-2 ring-rose-200"
+                                    }`}>
+                                    {(t as any).image ? (
+                                        <img src={(t as any).image} alt={t.name} className="w-full h-full object-cover" />
+                                    ) : (
+                                        <div className={`w-full h-full flex items-center justify-center font-bold text-xl ${t.featured
+                                            ? "bg-white/20 text-gold-accent"
+                                            : "bg-rose-200 text-rose-dark"
+                                            }`}>
+                                            {t.initials}
                                         </div>
-                                        <div className="text-sm text-chocolate/40">Pelanggan Setia</div>
-                                    </div>
+                                    )}
                                 </div>
-                            </motion.div>
-                        </AnimatePresence>
-                    </div>
-
-                    {/* Navigation Buttons */}
-                    <div className="flex items-center justify-center gap-4 mt-8">
-                        <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            onClick={() => paginate(-1)}
-                            className="p-2.5 rounded-xl bg-white shadow-soft hover:shadow-soft-lg border border-primary/10 text-chocolate/60 hover:text-primary transition-all duration-300"
-                        >
-                            <ChevronLeft className="w-5 h-5" />
-                        </motion.button>
-
-                        {/* Dots */}
-                        <div className="flex items-center gap-2">
-                            {testimonials.map((_, i) => (
-                                <button
-                                    key={i}
-                                    onClick={() => {
-                                        setDirection(i > current ? 1 : -1);
-                                        setCurrent(i);
-                                    }}
-                                    className={`h-2 rounded-full transition-all duration-300 ${i === current
-                                            ? "w-8 bg-primary"
-                                            : "w-2 bg-chocolate/20 hover:bg-chocolate/40"
-                                        }`}
-                                />
-                            ))}
-                        </div>
-
-                        <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            onClick={() => paginate(1)}
-                            className="p-2.5 rounded-xl bg-white shadow-soft hover:shadow-soft-lg border border-primary/10 text-chocolate/60 hover:text-primary transition-all duration-300"
-                        >
-                            <ChevronRight className="w-5 h-5" />
-                        </motion.button>
-                    </div>
+                                <div className={t.featured ? "text-left" : ""}>
+                                    <h4 className={`font-bold font-serif ${t.featured ? "text-gold-light" : "text-[#2d1b20]"
+                                        }`}>
+                                        {t.name}
+                                    </h4>
+                                    <p className={`text-xs font-medium uppercase tracking-wide font-sans ${t.featured ? "text-gray-400" : "text-rose-primary"
+                                        }`}>
+                                        {t.role}
+                                    </p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
                 </div>
             </div>
         </section>

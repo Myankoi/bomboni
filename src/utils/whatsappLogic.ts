@@ -1,7 +1,7 @@
 import { CartItem } from "@/store/useCart";
 import { formatPrice } from "@/data/products";
 
-const WHATSAPP_NUMBER = "6281234567890"; // Ganti dengan nomor WA bisnis
+const WHATSAPP_NUMBER = "6281211619370"; // Ganti dengan nomor WA bisnis
 
 export function generateWhatsAppMessage(
     name: string,
@@ -18,7 +18,7 @@ export function generateWhatsAppMessage(
         )
         .join("\n");
 
-    const message = `*ORDER BARU - BOMBONI* 🍩
+    const message = `*ORDER BARU - BOMBONI*
 --------------------------
 *Nama:* ${name}
 
@@ -28,9 +28,9 @@ ${itemLines}
 --------------------------
 *Total: ${formatPrice(total)}*
 --------------------------
-*Link Maps:* ${location}
+*Alamat:* ${location}
 
-Terima kasih! 🙏`;
+Terima kasih!`;
 
     return message;
 }

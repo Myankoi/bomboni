@@ -6,67 +6,66 @@ export interface Product {
     image: string;
     category: string;
     badge?: string;
-    emoji: string;
+    badgeColor?: string;
 }
+
+export const MIN_ORDER = 6;
+export const MIN_ORDER_LABEL = "Min. 6 pcs";
 
 export const products: Product[] = [
     {
         id: "nutella-blast",
         name: "Nutella Blast",
-        description: "Premium hazelnut chocolate filling yang creamy dan lumer di setiap gigitan. Fan favorite!",
-        price: 15000,
-        image: "/products/nutella-blast.jpg",
+        description: "Isian melimpah Nutella cokelat kacang yang otentik dan creamy, lumer di setiap gigitan.",
+        price: 8000,
+        image: "/images/image (2).jpg",
         category: "Chocolate",
         badge: "Best Seller",
-        emoji: "🍫",
+        badgeColor: "from-rose-primary to-purple-600",
     },
     {
-        id: "pistachio-glaze",
-        name: "Pistachio Glaze",
-        description: "Glazed bomboloni dengan pistachio cream asli dan taburan pistachio cincang.",
-        price: 18000,
-        image: "/products/pistachio-glaze.jpg",
+        id: "strawberry-love",
+        name: "Strawberry Love",
+        description: "Selai stroberi segar buatan rumah dengan isian melimpah, asam manis yang bikin nagih.",
+        price: 8000,
+        image: "/images/image (1).png",
+        category: "Fruit",
+        badge: "Favorit",
+        badgeColor: "from-emerald-500 to-teal-500",
+    },
+    {
+        id: "cheese-cloud",
+        name: "Cheese Cloud",
+        description: "Perpaduan gurihnya keju premium dan manisnya adonan donat yang pas.",
+        price: 8000,
+        image: "/images/image (2).jpg",
+        category: "Cheese",
+    },
+    {
+        id: "berry-love",
+        name: "Berry Love",
+        description: "Selai stroberi segar buatan rumah dengan potongan buah asli yang asam segar.",
+        price: 8000,
+        image: "/images/image (1).png",
+        category: "Fruit",
+    },
+    {
+        id: "kyoto-matcha",
+        name: "Kyoto Matcha",
+        description: "Krim teh hijau Jepang otentik dengan rasa manis-pahit yang elegan dan seimbang.",
+        price: 8000,
+        image: "/images/image (2).jpg",
         category: "Premium",
         badge: "New",
-        emoji: "🟢",
-    },
-    {
-        id: "red-velvet-cream",
-        name: "Red Velvet Cream",
-        description: "Red velvet dough dengan cream cheese filling yang tangy dan manis sempurna.",
-        price: 16000,
-        image: "/products/red-velvet-cream.jpg",
-        category: "Signature",
-        badge: "Popular",
-        emoji: "❤️",
+        badgeColor: "from-blue-400 to-indigo-500",
     },
     {
         id: "salted-caramel",
         name: "Salted Caramel",
-        description: "Caramel sauce homemade dengan hint of sea salt. Perpaduan manis-asin yang addictive.",
-        price: 16000,
-        image: "/products/salted-caramel.jpg",
+        description: "Saus karamel mentega yang halus dengan sentuhan garam laut, bikin ketagihan.",
+        price: 8000,
+        image: "/images/image (1).png",
         category: "Signature",
-        emoji: "🧂",
-    },
-    {
-        id: "matcha-latte",
-        name: "Matcha Latte",
-        description: "Japanese ceremonial grade matcha cream dengan white chocolate drizzle.",
-        price: 18000,
-        image: "/products/matcha-latte.jpg",
-        category: "Premium",
-        badge: "Limited",
-        emoji: "🍵",
-    },
-    {
-        id: "classic-sugar",
-        name: "Classic Sugar",
-        description: "Bomboloni original dengan taburan gula halus. Simple, timeless, dan selalu jadi favorit.",
-        price: 12000,
-        image: "/products/classic-sugar.jpg",
-        category: "Classic",
-        emoji: "✨",
     },
 ];
 
@@ -79,40 +78,39 @@ export const formatPrice = (price: number): string => {
     }).format(price);
 };
 
+export const formatPriceShort = (price: number): string => {
+    return `${price / 1000}K`;
+};
+
 export const testimonials = [
     {
         id: 1,
-        name: "Sarah Amelia",
+        name: "Andini Sari",
+        role: "Pecinta Dessert",
+        initials: "AS",
         rating: 5,
-        text: "Bomboloni terenak yang pernah aku coba! Nutella Blast-nya lumer banget di mulut. Pasti order lagi! 🤤",
-        avatar: "👩‍💼",
+        text: "Bomboloni paling empuk yang pernah saya coba! Isiannya benar-benar melimpah, gak pelit sama sekali. Favorit saya yang Nutella!",
+        featured: false,
+        image: "/images/image (1).jpeg",
     },
     {
         id: 2,
-        name: "Rizky Pratama",
+        name: "Budi Pratama",
+        role: "Food Blogger",
+        initials: "BP",
         rating: 5,
-        text: "Red Velvet Cream-nya beneran premium. Cream cheese-nya berasa banget. Worth every penny!",
-        avatar: "👨‍💻",
+        text: "Rasa Matcha-nya juara banget! Berasa premium bukan matcha kaleng-kaleng. Sangat worth it dengan harganya yang terjangkau. Packaging juga super aman.",
+        featured: true,
+        image: "/images/image (3).jpg",
     },
     {
         id: 3,
-        name: "Anisa Putri",
+        name: "Rina Melati",
+        role: "Ibu Rumah Tangga",
+        initials: "RM",
         rating: 5,
-        text: "Matcha Latte bomboloni-nya juara! Matcha-nya authentic, nggak pait. Packaging-nya juga cantik banget.",
-        avatar: "👩‍🎨",
-    },
-    {
-        id: 4,
-        name: "Budi Santoso",
-        rating: 4,
-        text: "Pesan buat acara kantor, semua orang suka! Salted Caramel jadi favorit. Delivery-nya juga cepat.",
-        avatar: "👨‍💼",
-    },
-    {
-        id: 5,
-        name: "Dina Rahayu",
-        rating: 5,
-        text: "Udah 3x reorder Pistachio Glaze. Beneran nagih! Harga juga affordable banget untuk rasa sekelas ini.",
-        avatar: "👩‍🍳",
+        text: "Pesanan sampai masih fresh dan empuk. Packaging-nya cantik banget cocok buat hampers ke teman atau keluarga. Next bakal order buat acara kantor!",
+        featured: false,
+        image: "/images/image (3).jpeg",
     },
 ];
