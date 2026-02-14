@@ -85,37 +85,41 @@ export default function WhatsAppModal() {
                             {/* Form */}
                             <form onSubmit={handleSubmit} className="p-6 space-y-5">
                                 {/* Name Field */}
-                                <div>
-                                    <label className="block text-sm font-medium text-neutral-500 mb-2 font-sans">
+                                <div className="space-y-2">
+                                    <label className="text-sm font-semibold text-neutral-700 ml-1 font-sans">
                                         Nama Lengkap
                                     </label>
-                                    <div className="relative">
-                                        <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-300" />
+                                    <div className="relative group">
+                                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                            <User className="h-5 w-5 text-neutral-400 group-focus-within:text-rose-primary transition-colors" />
+                                        </div>
                                         <input
                                             type="text"
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
                                             placeholder="Masukkan nama kamu"
                                             required
-                                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-rose-100 bg-cream-bg/30 text-[#2d1b20] placeholder:text-neutral-300 focus:outline-none focus:ring-2 focus:ring-rose-primary/30 focus:border-rose-primary transition-all font-sans"
+                                            className="block w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-neutral-900 text-sm placeholder:text-neutral-400 focus:border-rose-primary focus:bg-white focus:ring-4 focus:ring-rose-primary/10 transition-all duration-200 outline-none font-sans shadow-sm"
                                         />
                                     </div>
                                 </div>
 
                                 {/* Location Field */}
-                                <div>
-                                    <label className="block text-sm font-medium text-neutral-500 mb-2 font-sans">
+                                <div className="space-y-2">
+                                    <label className="text-sm font-semibold text-neutral-700 ml-1 font-sans">
                                         Alamat / Link Google Maps
                                     </label>
-                                    <div className="relative">
-                                        <MapPin className="absolute left-3.5 top-3.5 w-4 h-4 text-neutral-300" />
+                                    <div className="relative group">
+                                        <div className="absolute top-3.5 left-0 pl-4 pointer-events-none">
+                                            <MapPin className="h-5 w-5 text-neutral-400 group-focus-within:text-rose-primary transition-colors" />
+                                        </div>
                                         <textarea
                                             value={location}
                                             onChange={(e) => setLocation(e.target.value)}
                                             placeholder="Alamat lengkap atau paste link Google Maps"
                                             required
-                                            rows={2}
-                                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-rose-100 bg-cream-bg/30 text-[#2d1b20] placeholder:text-neutral-300 focus:outline-none focus:ring-2 focus:ring-rose-primary/30 focus:border-rose-primary transition-all resize-none font-sans"
+                                            rows={3}
+                                            className="block w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-neutral-900 text-sm placeholder:text-neutral-400 focus:border-rose-primary focus:bg-white focus:ring-4 focus:ring-rose-primary/10 transition-all duration-200 outline-none resize-none font-sans shadow-sm"
                                         />
                                     </div>
                                 </div>
